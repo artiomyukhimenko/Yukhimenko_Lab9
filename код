@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+#include <Windows.h>   
+using namespace std;
+struct Book {
+	string name;
+	string autor;
+	int years;
+	string genre;
+	
+
+	void founD(string name,int years) {
+		this->name = name;  this->years = years;
+	}
+	void printName() {
+		cout << "Назва книги:" << this->name << " " <<  ", Рік:" << this->years << endl;
+		 
+	}
+
+	void printGenre() {
+		cout << "Жанр:" << this->genre << endl; 
+	}
+	void printAutor() {
+		cout << "Автор:" << this->autor << endl;
+	}
+
+};
+	
+int main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	Book book;
+	book.founD("Робот Джо",2019);
+	book.genre = "Фантастика";
+	book.autor = "Петро Пуля";
+	book.printAutor();
+	book.printName();
+	book.printGenre();
+	return 0;
+}
