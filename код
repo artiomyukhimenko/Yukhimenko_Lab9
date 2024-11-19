@@ -2,39 +2,69 @@
 #include <string>
 #include <Windows.h>   
 using namespace std;
+
 struct Book {
-	string name;
-	string autor;
-	int years;
-	string genre;
-	
+    string name;
+    string autor;
+    int years;
+    string genre;
 
-	void founD(string name,int years) {
-		this->name = name;  this->years = years;
-	}
-	void printName() {
-		cout << "Назва книги:" << this->name << " " <<  ", Рік:" << this->years << endl;
-		 
-	}
+    void founD(string name, int years) {
+        this->name = name;  this->years = years;
+    }
+    void printName() {
+        cout << "Назва книги: " << this->name << ", Рік: " << this->years << endl;
+    }
 
-	void printGenre() {
-		cout << "Жанр:" << this->genre << endl; 
-	}
-	void printAutor() {
-		cout << "Автор:" << this->autor << endl;
-	}
-
+    void printGenre() {
+        cout << "Жанр: " << this->genre << endl;
+    }
+    void printAutor() {
+        cout << "Автор: " << this->autor << endl;
+    }
 };
-	
+
+                                                                              // фільтрації книг за роком
+void фільТер(Book books[], int size, int year) {
+    cout << "Книги, видані у " << year << " році:" << endl;
+    for (int i = 0; i < size; i++) {
+        if (books[i].years == year) {
+            books[i].printName();
+            books[i].printAutor();
+            books[i].printGenre();
+            cout << endl;
+        }
+    }
+}
+
 int main() {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-	Book book;
-	book.founD("Робот Джо",2019);
-	book.genre = "Фантастика";
-	book.autor = "Петро Пуля";
-	book.printAutor();
-	book.printName();
-	book.printGenre();
-	return 0;
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+                            
+    Book books[4];
+
+   
+    books[0].founD("Робот Джо", 2019);
+    books[0].genre = "Фантастика";
+    books[0].autor = "Петро Куля";
+
+    books[1].founD("Іт Скілл", 2020);
+    books[1].genre = "Наука";
+    books[1].autor = "Максим Болбот";
+
+    books[2].founD("Шлях Коду", 2019);
+    books[2].genre = "Програмування";
+    books[2].autor = "Анна Кодер";
+
+    books[3].founD("Шлях Тараса Бабенка у перекупі", 2015);
+    books[3].genre = "Перекуп";
+    books[3].autor = "Бабенко Тарас";
+
+    
+    фільТер(books, 4, 2019); 
+    фільТер(books, 4, 2020);  // визов фільтра тоєсть цикла де перебірається функція від Років всіх до года якого ми буде викликать через фільтер.
+    фільТер(books, 4, 2015);
+
+    return 0;
 }
